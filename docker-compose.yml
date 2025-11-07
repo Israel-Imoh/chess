@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  chess-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: chess-game
+    ports:
+      - "3000:80"
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+    networks:
+      - chess-network
+
+networks:
+  chess-network:
+    driver: bridge
